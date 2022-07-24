@@ -1,6 +1,18 @@
+let diagram = null;
+
 function main()
 {
-    var doc = document.getElementById("mainCanvas");
-    var context = doc.getContext("2d");
+    diagram = new Diagram("mainCanvas");
+    diagram.initialise();
 
+    draw();
+}
+
+
+function draw()
+{
+    diagram.clean();
+    diagram.draw();
+
+    requestAnimationFrame( draw );
 }
