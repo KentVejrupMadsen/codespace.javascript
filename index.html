@@ -5,6 +5,7 @@
         <title>
             Home
         </title>
+        <meta http-equiv="refresh" content="60">
     </head>
     <body>
         <header>
@@ -12,38 +13,59 @@
         </header>
         <main>
             <div>
-                <canvas id="mainCanvas" width="720" height="400">
+                <canvas id="mainCanvas" width="720" height="400" class="r180deg">
                 </canvas>
             </div>
-            <div id="statistics">
 
+            <div id="diagram">
+                <h4> Diagram </h4>
+                <div id="diagram_values">
+
+                </div>
             </div>
+
+            <div id="statistics">
+                <h4> Statistics </h4>
+                <div id="statistics_values">
+
+                </div>
+            </div>
+
         </main>
         <footer>
 
         </footer>
     </body>
-    <script src="./scripts/vector.js">
+
+    <script src="./scripts/vector.js" >
     </script>
 
-    <script src="./scripts/train.js">
+    <script src="./scripts/train.js" >
     </script>
 
-    <script src="./scripts/functions.js">
+    <script src="./scripts/functions.js" >
     </script>
 
-    <script src="./scripts/neurons.js">
+    <script src="./scripts/neurons.js" >
     </script>
 
-    <script src="scripts/diagrams.js">
+    <script src="scripts/diagram_events.js" >
     </script>
 
-    <script src="./scripts/network.js">
+    <script src="scripts/diagram_operations.js" >
     </script>
 
-    <script src="./scripts/code.js" onload="main();">
+    <script src="scripts/diagrams.js" >
+    </script>
+
+    <script src="./scripts/network.js" >
+    </script>
+
+    <script src="./scripts/code.js"
+            onload="main();" >
     </script>
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css" >
 </html>
