@@ -1,0 +1,35 @@
+html
+{
+  margin: 0;
+  padding: 0;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+}
+
+header
+{
+
+}
+
+main
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#mainCanvas
+{
+  border: 1px solid black;
+}
+
+footer
+{
+
+}

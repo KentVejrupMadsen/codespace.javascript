@@ -1,1 +1,1 @@
-# Algorithms.PHP
+# JavaScript
