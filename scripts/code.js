@@ -13,11 +13,7 @@ function main()
 function draw()
 {
     diagram.clean();
-
     diagram.draw();
-
-    diagram.test();
-
     diagram.update();
 
     requestAnimationFrame( draw );

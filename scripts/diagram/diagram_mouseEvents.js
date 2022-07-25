@@ -30,12 +30,8 @@ class DiagramMouseEventHandler
         {
             let context = mouseCanvas.getContext('2d');
 
-
-            const posX = calculateOffsetX(this.x, mouseCanvas.width);
-            const posY = calculateOffsetY(this.y, mouseCanvas.height);
-
             context.beginPath();
-            context.arc( posX, posY, 2, 0, 2 * Math.PI);
+            context.arc( this.X, this.Y, 2, 0, 2 * Math.PI);
             context.closePath();
 
             context.stroke();

@@ -99,3 +99,7 @@ setting_between()
 {
     this.context.strokeStyle = 'rgba(0, 0, 1, 1)';
 }
+
+this.context.moveTo(0, calculateOffsetY(0, this.Heigth));
+this.context.lineTo(40, calculateOffsetY(40, this.Heigth));
+this.context.stroke();

@@ -5,12 +5,14 @@ class Diagram
         this.__initialise_canvas( id );
         this.__initialise_mouseEvent();
 
-        this.cachedSize = null;
+        this.dimensions = null;
 
         this.origin = ZeroPositionVector.generate();
 
         this.axis = new PresentAxis();
         this.grid = new PresentGrid();
+
+        this.graphs = null;
     }
 
 
@@ -23,8 +25,14 @@ class Diagram
     __initialise_canvas( id )
     {
         this.document = document.getElementById( id );
+
+        this.document.width = window.innerWidth - 200;
+        this.document.height = window.innerHeight - 100;
+
         this.context = this.document.getContext("2d" );
     }
+
+
 
 
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/width
@@ -34,7 +42,7 @@ class Diagram
         const width = this.document.width;
         const heigth = this.document.height;
 
-        this.cachedSize = new Vector( width, heigth );
+        this.dimensions = new Vector( width, heigth );
     }
 
 
@@ -44,48 +52,62 @@ class Diagram
     }
 
 
-    get CachedSize()
+    get Dimensions()
     {
-        if( this.CachedSizeIsEmpty )
+        if( this.DimensionsIsEmpty )
         {
             this.__cache_size();
         }
 
-        return this.cachedSize;
+        return this.dimensions;
     }
 
 
     // Accessors
+    get Axis()
+    {
+        return this.axis;
+    }
+
+    get Grid()
+    {
+        return this.grid;
+    }
+
     get Width()
     {
-        if( this.CachedSizeIsEmpty )
+        if( this.DimensionsIsEmpty )
         {
             this.__cache_size();
         }
 
-        return this.cachedSize.X;
+        return this.dimensions.X;
     }
 
     get Heigth()
     {
-        if( this.CachedSizeIsEmpty )
+        if( this.DimensionsIsEmpty )
         {
             this.__cache_size();
         }
 
-        return this.cachedSize.Y;
+        return this.dimensions.Y;
     }
 
-    get CachedSizeIsEmpty()
+    get DimensionsIsEmpty()
     {
-        return this.cachedSize == null;
+        return this.dimensions == null;
     }
+
 
 
     // Code
     initialise()
     {
         console.log( { 'width': this.Width, 'heigth': this.Heigth } );
+
+        this.grid.Screen = this.Dimensions;
+        this.axis.Screen = this.Dimensions;
     }
 
     update()
@@ -95,26 +117,21 @@ class Diagram
 
     draw()
     {
+        this.clean();
+
         this.mouseEventHandler.drawMouse();
 
-        this.grid.Screen = this.CachedSize;
+        this.axis.draw( this.context );
         this.grid.draw( this.context );
-
     }
 
-    test()
-    {
-        const ctx = this.context;
-
-
-
-    }
 
     clean()
     {
-        this.clearArea( this.origin,
-                        this.cachedSize );
+        this.clearArea( this.Origin,
+                        this.Dimensions );
     }
+
 
     clearArea( pS, pE )
     {
