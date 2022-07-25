@@ -1,0 +1,11 @@
+# Default for all
+* text=auto
+
+*.md diff=markdown eol=crlf
+
+*.sh diff=sh eol=lf
+*.java diff=java eol=crlf
+
+# Git attributes
+.gitignore text eol=lf
+.gitattributes text eol=lf
