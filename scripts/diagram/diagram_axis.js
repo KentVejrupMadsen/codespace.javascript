@@ -48,7 +48,14 @@ class PresentAxis
 {
     constructor()
     {
-        this.y = new PresentYAxisOperation();
-        this.x = new PresentXAxisOperation();
+        this.yAxis = new PresentYAxisOperation();
+        this.xAxis = new PresentXAxisOperation();
+
+        this.showAxis = true;
+    }
+
+    draw( canvasContext )
+    {
+
     }
 }
