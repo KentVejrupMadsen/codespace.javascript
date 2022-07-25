@@ -2,6 +2,8 @@ const stateLabelActive   = 'active';
 const stateLabelInactive = 'Inactive';
 const stateLabelLink     = 'link';
 
+var counter = 0;
+
 
 class NodeState
 {
@@ -10,7 +12,7 @@ class NodeState
         this.assignLink();
     }
 
-    
+
     // Accessors
     set State( v )
     {
@@ -45,15 +47,37 @@ class NodeElement
 {
     constructor()
     {
+        this.id = counter;
         this.state = new NodeState();
+
+        NodeElement.forwardCounter();
+
+        // connected to it's neighbors
         this.neighbors = null;
     }
 
+    static forwardCounter()
+    {
+        counter = counter + 1;
+    }
+
+    get Identifier()
+    {
+        return this.id;
+    }
+
+    set Identifier( v )
+    {
+        this.id = v;
+    }
+
+    //
     get State()
     {
         return this.state;
     }
 
+    //
     get Neighbors()
     {
         return this.neighbors;
@@ -64,15 +88,5 @@ class NodeElement
         this.neighbors = v;
     }
 
-
-}
-
-
-class NodeList
-{
-    constructor( n )
-    {
-
-    }
 
 }

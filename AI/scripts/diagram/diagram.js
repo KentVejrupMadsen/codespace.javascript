@@ -13,7 +13,8 @@ class Diagram
         this.axis = new PresentAxis();
         this.grid = new PresentGrid();
 
-        this.graphs = null;
+        this.layers = new NodeNetwork(4, 12, 8, 3 );
+        this.layers.connectNeighbors();
     }
 
 
@@ -44,6 +45,11 @@ class Diagram
         const heigth = this.document.height;
 
         this.dimensions = new Vector( width, heigth );
+    }
+
+    get Layers()
+    {
+        return this.layers;
     }
 
 
