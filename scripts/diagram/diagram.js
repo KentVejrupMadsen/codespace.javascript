@@ -7,14 +7,12 @@ class Diagram
 
         this.cachedSize = null;
 
+        this.origin = ZeroPositionVector.generate();
+
         this.axis = new PresentAxis();
         this.grid = new PresentGrid();
     }
 
-    __initialise_grid()
-    {
-
-    }
 
     __initialise_mouseEvent()
     {
@@ -29,6 +27,8 @@ class Diagram
     }
 
 
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/width
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/height
     __cache_size()
     {
         const width = this.document.width;
@@ -38,11 +38,27 @@ class Diagram
     }
 
 
+    get Origin()
+    {
+        return this.origin;
+    }
+
+
+    get CachedSize()
+    {
+        if( this.CachedSizeIsEmpty )
+        {
+            this.__cache_size();
+        }
+
+        return this.cachedSize;
+    }
+
+
     // Accessors
-        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/width
     get Width()
     {
-        if( this.cachedSize == null )
+        if( this.CachedSizeIsEmpty )
         {
             this.__cache_size();
         }
@@ -50,10 +66,9 @@ class Diagram
         return this.cachedSize.X;
     }
 
-        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/height
     get Heigth()
     {
-        if( this.cachedSize == null )
+        if( this.CachedSizeIsEmpty )
         {
             this.__cache_size();
         }
@@ -61,11 +76,16 @@ class Diagram
         return this.cachedSize.Y;
     }
 
+    get CachedSizeIsEmpty()
+    {
+        return this.cachedSize == null;
+    }
+
 
     // Code
     initialise()
     {
-        console.log({'width': this.Width, 'heigth': this.Heigth});
+        console.log( { 'width': this.Width, 'heigth': this.Heigth } );
     }
 
     update()
@@ -77,13 +97,28 @@ class Diagram
     {
         this.mouseEventHandler.drawMouse();
 
-        this.grid.Screen = this.cachedSize;
+        this.grid.Screen = this.CachedSize;
         this.grid.draw( this.context );
+
+    }
+
+    test()
+    {
+        const ctx = this.context;
+
+
 
     }
 
     clean()
     {
-        this.context.clearRect(0, 0, this.Width, this.Heigth);
+        this.clearArea( this.origin,
+                        this.cachedSize );
+    }
+
+    clearArea( pS, pE )
+    {
+        this.context.clearRect( pS.X, pS.Y,
+                                pE.X, pE.Y );
     }
 }

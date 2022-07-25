@@ -16,6 +16,8 @@ function draw()
 
     diagram.draw();
 
+    diagram.test();
+
     diagram.update();
 
     requestAnimationFrame( draw );

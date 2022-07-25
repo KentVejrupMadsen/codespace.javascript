@@ -1,4 +1,7 @@
-﻿class BaseVector
+﻿/**
+ *
+ */
+class BaseVector
 {
     constructor( x, y )
     {
@@ -37,7 +40,7 @@
 
 
 /**
- * A vector, which has a length and a direction, that it is moving in
+ * A vector, which has a length and a direction, that it is moving in, x & y indicates in which direction
  */
 class Vector
     extends BaseVector
@@ -47,6 +50,13 @@ class Vector
         super( x, y );
     }
 
+    length()
+    {
+        const px2 = Math.pow( this.X, 2 );
+        const py2 = Math.pow( this.Y, 2 );
+
+        return Math.sqrt( ( px2 + py2 ) );
+    }
 }
 
 
@@ -61,4 +71,42 @@ class PositionVector
         super( x, y );
     }
 
+}
+
+
+//
+let z = null;
+
+
+/**
+ *
+ */
+class ZeroPositionVector
+{
+    constructor()
+    {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    get X()
+    {
+        return this.x;
+    }
+
+    get Y()
+    {
+        return this.y;
+    }
+
+
+    static generate()
+    {
+        if( z == null )
+        {
+            z = new ZeroPositionVector();
+        }
+
+        return z;
+    }
 }
