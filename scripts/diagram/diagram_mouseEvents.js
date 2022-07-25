@@ -1,5 +1,6 @@
 var mouseDiagramEventHandler = null;
-var br = null;
+var mouseCanvas = null;
+
 
 class DiagramMouseEventHandler
     extends PositionVector
@@ -10,12 +11,10 @@ class DiagramMouseEventHandler
 
     }
 
-    setup( canvas )
+    static setup( canvas )
     {
         mouseDiagramEventHandler = new DiagramMouseEventHandler();
-        br = canvas.getBoundingClientRect();
-
-        console.log({'boundary': br});
+        mouseCanvas = canvas;
 
         canvas.addEventListener( "mousemove", function( e ){ diagram_event_mouse_move( e ) } );
     }
@@ -24,5 +23,7 @@ class DiagramMouseEventHandler
 
 function diagram_event_mouse_move( e )
 {
-    
+    var handler = mouseDiagramEventHandler;
+    let boundary = mouseCanvas.getBoundingClientRect();
+
 }
