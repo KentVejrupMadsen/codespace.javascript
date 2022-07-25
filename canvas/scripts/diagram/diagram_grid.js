@@ -89,8 +89,8 @@ class PresentXGridOperation
         {
             const current = offsetByOne( y ) * this.GridSize;
 
-            const pS = new PositionVector(0, current );
-            const pE = new PositionVector( screenSize.X , current );
+            const pS = new PositionVector(0, calculateOffsetY( current, screenSize.Y ) );
+            const pE = new PositionVector( screenSize.X , calculateOffsetY( current, screenSize.Y ) );
 
             this.__grid_line( pS, pE, context );
         }
@@ -141,8 +141,8 @@ class PresentYGridOperation
         {
             const current = offsetByOne( x ) * this.GridSize;
 
-            const pS = new PositionVector( current, 0 );
-            const pE = new PositionVector( current , screenSize.Y );
+            const pS = new PositionVector( current, calculateOffsetY(0, screenSize.Y ) );
+            const pE = new PositionVector( current , calculateOffsetY( screenSize.Y, screenSize.Y ));
 
             this.__grid_line( pS, pE, context );
         }

@@ -32,8 +32,8 @@ class PresentXAxisOperation
     {
         if( this.Show )
         {
-            const pS = ZeroPositionVector.generate();
-            const pE = new PositionVector( screenSize.X, 0 );
+            const pS = new PositionVector(0, calculateOffsetY(0, screenSize.Y ) );
+            const pE = new PositionVector( screenSize.X, calculateOffsetY(0, screenSize.Y ) );
 
             canvasContext.beginPath();
 
@@ -61,8 +61,8 @@ class PresentYAxisOperation
     {
         if( this.Show )
         {
-            const pS = ZeroPositionVector.generate();
-            const pE = new PositionVector(0, screenSize.Y );
+            const pS = new PositionVector(0, calculateOffsetY(0, screenSize.Y));
+            const pE = new PositionVector(0, calculateOffsetY(screenSize.Y, screenSize.Y) );
 
             canvasContext.beginPath();
 

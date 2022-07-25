@@ -32,6 +32,21 @@ class BaseVector
         this.y = y;
     }
 
+    flip()
+    {
+        return this.flipX(), this.flipY();
+    }
+
+    flipX()
+    {
+        return -this.X;
+    }
+
+    flipY()
+    {
+        return -this.Y;
+    }
+
     logState()
     {
         console.log( { 'X' : this.X, 'Y' : this.Y } )
@@ -48,6 +63,12 @@ class Vector
     constructor( x, y )
     {
         super( x, y );
+    }
+
+    assign( x, y )
+    {
+        this.X = x;
+        this.Y = y;
     }
 
     length()

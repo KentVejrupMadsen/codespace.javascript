@@ -6,6 +6,7 @@ class Diagram
         this.__initialise_mouseEvent();
 
         this.dimensions = null;
+        this.dimensionsIsChanged = false;
 
         this.origin = ZeroPositionVector.generate();
 
@@ -112,11 +113,39 @@ class Diagram
 
     update()
     {
+        this.__update_dimensions();
 
+    }
+
+    __calc_window_width()
+    {
+        return window.innerWidth - 100;
+    }
+
+    __calc_window_height()
+    {
+        return window.innerHeight - 200;
+    }
+
+    __update_dimensions()
+    {
+        if( this.dimensionsIsChanged )
+        {
+            const widthDimension = this.__calc_window_width();
+            const heightDimension = this.__calc_window_height();
+
+            this.document.width = widthDimension;
+            this.document.height = heightDimension;
+
+            this.dimensions.assign( widthDimension, heightDimension );
+
+            this.dimensionsIsChanged = false;
+        }
     }
 
     draw()
     {
+        this.update();
         this.clean();
 
         this.mouseEventHandler.drawMouse();
