@@ -1,4 +1,4 @@
-const fw = require('./framework.js');
+const fw = require('./framework/framework.js');
 
 let framework = new fw();
 
@@ -8,3 +8,5 @@ function entry()
     framework.initialise();
     framework.test();
 }
+
+entry();
