@@ -49,7 +49,7 @@ class NodeElement
     {
         this.id = counter;
         NodeElement.forwardCounter();
-        
+
         this.state = new NodeState();
 
         // connected to it's neighbors
