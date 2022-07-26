@@ -6,9 +6,9 @@
   "scripts":
   {
     "entry": "index.js",
-
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test.js",
+    "automated": "automatedTests.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Kent vejrup Madsen",
+  "license": "MIT License"
 }

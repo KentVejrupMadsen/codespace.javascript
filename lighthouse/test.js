@@ -6,9 +6,5 @@ let framework = new fw();
 function entry()
 {
     framework.initialise();
-    framework.execute();
-    framework.clean();
+    framework.test();
 }
-
-
-entry();
