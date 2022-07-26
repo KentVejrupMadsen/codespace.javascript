@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts":
-  {
+  "scripts": {
     "entry": "index.js",
     "test": "test.js",
     "automated": "automatedTests.js"
   },
   "author": "Kent vejrup Madsen",
-  "license": "MIT License"
+  "license": "MIT License",
+  "devDependencies": {
+    "grunt": "^1.5.3",
+    "nodemon": "^2.0.19"
+  }
 }
