@@ -15,6 +15,8 @@ class Diagram
 
         this.layers = new NodeNetwork(4, 12, 8, 3 );
         this.layers.connectNeighbors();
+
+        this.useDiagram = new DiagramGraph( this.context, this.Dimensions, this.layers );
     }
 
 
@@ -158,6 +160,8 @@ class Diagram
 
         this.axis.draw( this.context );
         this.grid.draw( this.context );
+
+        this.useDiagram.draw();
     }
 
 

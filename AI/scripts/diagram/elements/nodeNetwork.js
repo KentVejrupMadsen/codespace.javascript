@@ -98,6 +98,8 @@ class NodeNetwork
         return this.middleLayer[idx];
     }
 
+
+
     connectNeighbors()
     {
         this._connect_input_layer();

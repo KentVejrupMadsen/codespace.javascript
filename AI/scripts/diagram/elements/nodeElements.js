@@ -48,9 +48,9 @@ class NodeElement
     constructor()
     {
         this.id = counter;
-        this.state = new NodeState();
-
         NodeElement.forwardCounter();
+        
+        this.state = new NodeState();
 
         // connected to it's neighbors
         this.neighbors = null;
