@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+  "scripts":
+  {
+    "entry": "index.js",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
