@@ -30,12 +30,30 @@ module.exports =
 
         test()
         {
+            this.test_in();
+        }
+
+        test_in()
+        {
             console.log('lighthouse ------- Running Test');
 
             let n = new Node();
             n.generate(15);
 
-            console.log( n.Activator.activate(4, 0.2, 1) );
-            console.log(n.inputs);
+            let it = n.generateInputIterator();
+
+            while ( it.Continue )
+            {
+                let currentValue = it.CurrentValue;
+
+                currentValue.Weight = Math.random();
+                currentValue.Input = Math.random() * 0.8;
+
+                it.Next;
+            }
+
+            console.log( n );
+            console.log("=====================================================");
+            console.log( n.calculateOutput() );
         }
     }
