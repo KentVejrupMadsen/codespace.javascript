@@ -6,7 +6,7 @@
   "scripts": {
     "entry": "index.js",
     "test": "test.js",
-    "automated": "automatedTests.js"
+    "automated": "automatedTasks.js"
   },
   "author": "Kent vejrup Madsen",
   "license": "MIT License",
