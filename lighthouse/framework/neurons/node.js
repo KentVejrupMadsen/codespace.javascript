@@ -9,8 +9,10 @@ module.exports =
         {
             this.inputs = Array()
             this.output = 0;
+            this.bias = 2;
 
             this.learn = 0.25;
+            this.threshold = 0.75;
 
             this.activator = new Activator();
         }
@@ -21,7 +23,7 @@ module.exports =
         {
 
         }
-        
+
 
         generateInputIterator()
         {
@@ -41,8 +43,15 @@ module.exports =
                 result = result + current.sum;
             }
 
-            this.output = result;
-            return this.output;
+            return result;
+        }
+
+        activate()
+        {
+            const v = this.activator.activate( this.calculateOutput(), this.bias, 1);
+            this.Output = v;
+
+            return v;
         }
 
 
@@ -55,6 +64,16 @@ module.exports =
         set Activator( value )
         {
             this.activator = value;
+        }
+
+        get Threshold()
+        {
+            return this.threshold;
+        }
+
+        set Threshold( value )
+        {
+            this.threshold = value;
         }
 
         get Learn()
@@ -77,9 +96,29 @@ module.exports =
             this.inputs = value;
         }
 
+        get Bias()
+        {
+            return this.bias;
+        }
+
+        set Bias( value )
+        {
+            this.bias = value;
+        }
+
         get Output()
         {
             return this.output;
+        }
+
+        get OutputValue()
+        {
+            if( this.Output > this.threshold )
+            {
+                return 1;
+            }
+
+            return 0;
         }
 
         set Output( value )

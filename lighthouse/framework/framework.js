@@ -38,7 +38,7 @@ module.exports =
             console.log('lighthouse ------- Running Test');
 
             let n = new Node();
-            n.generate(15);
+            n.generate(5);
 
             let it = n.generateInputIterator();
 
@@ -52,8 +52,11 @@ module.exports =
                 it.Next;
             }
 
-            console.log( n );
             console.log("=====================================================");
-            console.log( n.calculateOutput() );
+            console.log( n.activate() );
+
+            console.log("=====================================================");
+            console.log( n );
+            console.log(n.OutputValue);
         }
     }
