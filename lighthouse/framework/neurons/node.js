@@ -1,6 +1,7 @@
 const NeuronInput = require( './neuronInput.js' );
 const Activator = require( './sigmoidActivation.js' );
 const Iterator = require( './nodeInputIterator.js' );
+const DataSet = require('./dataset.js');
 
 module.exports =
     class NeuronNode
@@ -19,11 +20,49 @@ module.exports =
 
 
         // Trains the specific neuron for x amount of iterations. keep in mind counted in steps
-        train( iterations, values )
+        train( iterations, TrainWith )
         {
+            if( TrainWith instanceof Array )
+            {
+                this._trainWithArrayDataset( TrainWith, iterations );
+                return;
+            }
 
+            if( TrainWith instanceof DataSet )
+            {
+                this._trainWithDataset( TrainWith, iterations );
+                return;
+            }
+
+            throw new Error();
         }
 
+        _trainWithArrayDataset( array, iterations, iterate=0 )
+        {
+            if( !(iterate === iterations) )
+            {
+                const next = iterate + 1;
+                this._trainWithArrayDataset( array, iterations, next );
+            }
+        }
+
+        _trainWithDataset( dataset, iterations, iterate=0 )
+        {
+
+            if( !(iterate === iterations) )
+            {
+                const next = iterate + 1;
+                this._trainWithDataset(dataset, iterations, next);
+            }
+        }
+
+        mapDataSet()
+        {
+            let r = new DataSet();
+            r.generateInputs( this.inputs.length );
+
+            return r;
+        }
 
         generateInputIterator()
         {

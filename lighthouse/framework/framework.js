@@ -38,7 +38,7 @@ module.exports =
             console.log('lighthouse ------- Running Test');
 
             let n = new Node();
-            n.generate(5);
+            n.generate(2);
 
             let it = n.generateInputIterator();
 
@@ -58,5 +58,15 @@ module.exports =
             console.log("=====================================================");
             console.log( n );
             console.log(n.OutputValue);
+
+
+            console.log("=====================================================");
+            let ds1 = n.mapDataSet();
+            n.train(2, ds1);
+
+            console.log("trained");
+            console.log(ds1);
+            console.log(n);
+
         }
     }
