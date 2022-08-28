@@ -1,0 +1,20 @@
+{
+  "name": "testbed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "entry": "index.js",
+    "test": "test.js",
+    "automated": "automatedTasks.js"
+  },
+  "author": "Kent vejrup Madsen",
+  "license": "MIT License",
+  "devDependencies": {
+    "grunt": "^1.5.3",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "grunt-nodemon": "^0.4.2"
+  }
+}
